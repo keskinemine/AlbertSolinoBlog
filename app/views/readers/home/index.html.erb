@@ -1,0 +1,51 @@
+<% provide(:page_title, 'All Posts') %>
+<% provide(:blog_active, 'active') %>
+
+<%= render 'layouts/navbar' %>
+<div class="container <%= controller_name %> <%= action_name %>">
+
+    <div class="row">
+        <div class="col-lg-10 d-flex flex-row ">
+            <% @posts.each do |post| %>
+                <div class="col-md-6 col-lg-4 me-3 ms-5 ">
+                    <div class="card post-card  "
+                    <% if post.header_image.present? %>>
+                        <div class="header-image" style="background-image: url(<%= url_for(post.header_image) %>)">               
+                        </div>
+                    <% end %>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><%= post.title %></h5>
+                            <p class="card-text"><%= truncate(post.description, length: 300) %></p>
+                            <%= link_to "Devamını oku...", blog_post_path(post), class: 'btn btn-primary mt-auto' %>
+                        </div>
+                    </div> 
+                </div>   
+            <% end %>
+        </div>
+    </div>
+        <div id="disqus_thread"></div>
+        <noscript>
+            Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>        
+    </div>
+</div>
+
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+
+            var disqus_config = function () {
+                this.page.url = '<%= request.original_url %>';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = '<%= @post %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://albertsolinoblog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+        </script>
+

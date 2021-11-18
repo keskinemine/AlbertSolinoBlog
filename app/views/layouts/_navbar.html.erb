@@ -1,0 +1,45 @@
+<div class="collapse" id="Navbar">
+  <div class="collapse-bg p-a-1">
+    <div class='card'>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <%= link_to 'Blog', root_path, class: "nav-link #{yield(:blog_active)}" %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to 'About', about_path, class: "nav-link #{yield(:about_active)}" %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to 'Contact', contact_path, class: "nav-link #{yield(:contact_active)}" %>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark mb-3">
+  <div class="container-fluid">
+    <a class='navbar-brand' href='/'>
+      AlbertSolino<span class='light'>Blog</span>
+    </a>
+    <button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#Navbar">
+      &#9776;
+    </button>
+    <ul class="nav navbar-nav pull-sm-right hidden-xs-down">
+      <li class="nav-item">
+        <%= link_to 'Blog', root_path, class: "nav-link #{yield(:blog_active)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Hakkımızda', about_path, class: "nav-link #{yield(:about_active)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'İletişim', contact_path, class: "nav-link #{yield(:contact_active)}" %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
